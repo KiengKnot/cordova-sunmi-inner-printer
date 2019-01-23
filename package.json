@@ -1,13 +1,13 @@
 {
   "name": "cordova-sunmi-inner-printer",
   "version": "1.0.0",
-  "description": "Cordova Sunmi V1 Inner Printer",
+  "description": "Cordova Sunmi V1.1 Inner Printer modified by Magma17",
   "cordova": {
     "id": "cordova-sunmi-inner-printer",
     "platforms": [
       "android"
     ]
   },
-  "author": "Muhammad Labib Ramadhan",
+  "author": "Kiewlamphone SOUVANLIT",
   "license": "MIT"
 }

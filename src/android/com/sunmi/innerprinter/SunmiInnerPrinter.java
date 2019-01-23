@@ -28,7 +28,7 @@ import android.util.Log;
 import com.sunmi.utils.BitmapUtils;
 import com.sunmi.utils.ThreadPoolManager;
 
-public class Printer extends CordovaPlugin {
+public class SunmiInnerPrinter extends CordovaPlugin {
     private static final String TAG = "SunmiInnerPrinter";
 
     private BitmapUtils bitMapUtils;

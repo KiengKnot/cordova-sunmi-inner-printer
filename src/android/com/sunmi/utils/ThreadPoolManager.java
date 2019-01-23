@@ -8,23 +8,22 @@ import java.util.concurrent.Executors;
  *
  * @author lenovo
  * @see https://github.com/januslo/react-native-sunmi-inner-printer/blob/master/android/src/main/java/com/sunmi/innerprinter/ThreadPoolManager.java
- *
  */
 public class ThreadPoolManager {
-	private ExecutorService service;
+    private ExecutorService service;
 
-	private ThreadPoolManager() {
-		int num = Runtime.getRuntime().availableProcessors() * 20;
-		service = Executors.newFixedThreadPool(num);
-	}
+    private ThreadPoolManager() {
+        int num = Runtime.getRuntime().availableProcessors() * 20;
+        service = Executors.newFixedThreadPool(num);
+    }
 
-	private static final ThreadPoolManager manager = new ThreadPoolManager();
+    private static final ThreadPoolManager manager = new ThreadPoolManager();
 
-	public static ThreadPoolManager getInstance() {
-		return manager;
-	}
+    public static ThreadPoolManager getInstance() {
+        return manager;
+    }
 
-	public void executeTask(Runnable runnable) {
-		service.execute(runnable);
-	}
+    public void executeTask(Runnable runnable) {
+        service.execute(runnable);
+    }
 }

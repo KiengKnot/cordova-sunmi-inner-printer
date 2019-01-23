@@ -6,13 +6,13 @@
   <engines>
     <engine name="cordova" version=">=3.0.0"/>
   </engines>
-  <js-module src="www/innerprinter.js" name="InnerPrinter">
+  <js-module src="www/innerprinter.js" name="SunmiInnerPrinter">
     <clobbers target="sunmiInnerPrinter" />
   </js-module>
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="Printer">
-        <param name="android-package" value="com.sunmi.innerprinter.Printer"/>
+        <param name="android-package" value="com.sunmi.innerprinter.SunmiInnerPrinter"/>
         <param name="onload" value="true" />
       </feature>
     </config-file>
@@ -36,7 +36,7 @@
         </intent-filter>
       </service>
     </config-file>
-    <source-file src="src/android/com/sunmi/innerprinter/Printer.java" target-dir="src/com/sunmi/innerprinter/"/>
+    <source-file src="src/android/com/sunmi/innerprinter/SunmiInnerPrinter.java" target-dir="src/com/sunmi/innerprinter/"/>
     <source-file src="src/android/com/sunmi/innerprinter/PrinterStatusReceiver.java" target-dir="src/com/sunmi/innerprinter/"/>
     <source-file src="src/android/com/sunmi/utils/BitmapUtils.java" target-dir="src/com/sunmi/utils/"/>
     <source-file src="src/android/com/sunmi/utils/ThreadPoolManager.java" target-dir="src/com/sunmi/utils/"/>

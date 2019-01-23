@@ -12,48 +12,48 @@ import android.util.Log;
 import org.json.JSONObject;
 
 public class PrinterStatusReceiver extends BroadcastReceiver {
-  private static final String TAG = "SunmiInnerPrinterReceiver";
+    private static final String TAG = "SunmiInnerPrinterReceiver";
 
-  private CallbackContext callbackReceive;
-  private boolean isReceiving = true;
+    private CallbackContext callbackReceive;
+    private boolean isReceiving = true;
 
-  public PrinterStatusReceiver() {
+    public PrinterStatusReceiver() {
 
-  }
-
-  @Override
-  public void onReceive(Context context, Intent data) {
-    if (this.isReceiving && this.callbackReceive != null) {
-      String action = data.getAction();
-      String type = "PrinterStatus";
-
-      JSONObject jsonObj = new JSONObject();
-      try {
-        jsonObj.put("type", type);
-        jsonObj.put("action", action);
-
-        Log.i(TAG, "RECEIVED STATUS " + action);
-
-        PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObj);
-        result.setKeepCallback(true);
-        callbackReceive.sendPluginResult(result);
-      } catch (Exception e) {
-        Log.i(TAG, "ERROR: " + e.getMessage());
-      }
     }
-  }
 
-  public void startReceiving(CallbackContext ctx) {
-    this.callbackReceive = ctx;
-    this.isReceiving = true;
+    @Override
+    public void onReceive(Context context, Intent data) {
+        if (this.isReceiving && this.callbackReceive != null) {
+            String action = data.getAction();
+            String type = "PrinterStatus";
 
-    Log.i(TAG, "Start receiving status");
-  }
+            JSONObject jsonObj = new JSONObject();
+            try {
+                jsonObj.put("type", type);
+                jsonObj.put("action", action);
 
-  public void stopReceiving() {
-    this.callbackReceive = null;
-    this.isReceiving = false;
+                Log.i(TAG, "RECEIVED STATUS " + action);
 
-    Log.i(TAG, "Stop receiving status");
-  }
+                PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObj);
+                result.setKeepCallback(true);
+                callbackReceive.sendPluginResult(result);
+            } catch (Exception e) {
+                Log.i(TAG, "ERROR: " + e.getMessage());
+            }
+        }
+    }
+
+    public void startReceiving(CallbackContext ctx) {
+        this.callbackReceive = ctx;
+        this.isReceiving = true;
+
+        Log.i(TAG, "Start receiving status");
+    }
+
+    public void stopReceiving() {
+        this.callbackReceive = null;
+        this.isReceiving = false;
+
+        Log.i(TAG, "Stop receiving status");
+    }
 }
