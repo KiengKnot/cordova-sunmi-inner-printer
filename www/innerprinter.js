@@ -90,3 +90,5 @@ SunmiInnerPrinter.prototype._getErrorCallback = function (ecb, functionName) {
         }
     }
 };
+
+module.exports = SunmiInnerPrinter;
