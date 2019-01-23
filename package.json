@@ -1,6 +1,6 @@
 {
   "name": "cordova-sunmi-inner-printer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cordova Sunmi V1.1 Inner Printer modified by Magma17",
   "cordova": {
     "id": "cordova-sunmi-inner-printer",
