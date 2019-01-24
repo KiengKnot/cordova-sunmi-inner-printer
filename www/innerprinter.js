@@ -1,94 +1,96 @@
-function SunmiInnerPrinter() {
-    console.log('Custom Sunmi Inner Printer Plugin instanced');
-}
+let exec = require('cordova/exec');
 
-SunmiInnerPrinter.prototype.printerInit = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printerInit"), "SunmiInnerPrinter", "printerInit", []);
-};
-
-SunmiInnerPrinter.prototype.printerSelfChecking = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printerSelfChecking"), "SunmiInnerPrinter", "printerSelfChecking", []);
-};
-
-SunmiInnerPrinter.prototype.getPrinterSerialNo = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "getPrinterSerialNo"), "SunmiInnerPrinter", "getPrinterSerialNo", []);
-};
-
-SunmiInnerPrinter.prototype.getPrinterVersion = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "getPrinterVersion"), "SunmiInnerPrinter", "getPrinterVersion", []);
-};
-
-SunmiInnerPrinter.prototype.hasPrinter = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "hasPrinter"), "SunmiInnerPrinter", "hasPrinter", []);
-};
-
-SunmiInnerPrinter.prototype.getPrintedLength = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "getPrintedLength"), "SunmiInnerPrinter", "getPrintedLength", []);
-};
-
-SunmiInnerPrinter.prototype.lineWrap = function (count, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "lineWrap"), "SunmiInnerPrinter", "lineWrap", [count]);
-};
-
-SunmiInnerPrinter.prototype.sendRAWData = function (base64Data, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "sendRAWData"), "SunmiInnerPrinter", "sendRAWData", [base64Data]);
-};
-
-SunmiInnerPrinter.prototype.setAlignment = function (alignment, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "setAlignment"), "SunmiInnerPrinter", "setAlignment", [alignment]);
-};
-
-SunmiInnerPrinter.prototype.setFontName = function (typeface, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "setFontName"), "SunmiInnerPrinter", "setFontName", [typeface]);
-};
-
-SunmiInnerPrinter.prototype.setFontSize = function (fontSize, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "setFontSize"), "SunmiInnerPrinter", "setFontSize", [fontSize]);
-};
-
-SunmiInnerPrinter.prototype.printTextWithFont = function (text, typeface, fontSize, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printTextWithFont"), "SunmiInnerPrinter", "printTextWithFont", [text, typeface, fontSize]);
-};
-
-SunmiInnerPrinter.prototype.printColumnsText = function (colsTextArr, colsWidthArr, colsAlign, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printColumnsText"), "SunmiInnerPrinter", "printColumnsText", [colsTextArr, colsWidthArr, colsAlign]);
-};
-
-SunmiInnerPrinter.prototype.printBitmap = function (base64Data, width, height, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printBitmap"), "SunmiInnerPrinter", "printBitmap", [base64Data, width, height]);
-};
-
-SunmiInnerPrinter.prototype.printBarCode = function (symbology, width, height, textPosition, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printBarCode"), "SunmiInnerPrinter", "printBarCode", [symbology, width, height, textPosition]);
-};
-
-SunmiInnerPrinter.prototype.printQRCode = function (qrCodeData, moduleSize, errorLevel, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printQRCode"), "SunmiInnerPrinter", "printQRCode", [qrCodeData, moduleSize, errorLevel]);
-};
-
-SunmiInnerPrinter.prototype.printOriginalText = function (text, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printOriginalText"), "SunmiInnerPrinter", "printOriginalText", [text]);
-};
-
-SunmiInnerPrinter.prototype.printString = function (text, successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printString"), "SunmiInnerPrinter", "printString", [text]);
-};
-
-SunmiInnerPrinter.prototype.printerStatusStartListener = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printerStatusStartListener"), "SunmiInnerPrinter", "printerStatusStartListener", []);
-};
-SunmiInnerPrinter.prototype.printerStatusStopListener = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, this._getErrorCallback(errorCallback, "printerStatusStopListener"), "SunmiInnerPrinter", "printerStatusStopListener", []);
-};
-
-
-SunmiInnerPrinter.prototype._getErrorCallback = function (ecb, functionName) {
-    if (typeof ecb === 'function') {
-        return ecb;
-    } else {
-        return function (result) {
-            console.log("The injected error callback of '" + functionName + "' received: " + JSON.stringify(result));
+let SunmiInnerPrinter = {
+    printerInit: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printerInit"), "SunmiInnerPrinter", "printerInit", []);
+        })
+    }, printerSelfChecking: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printerSelfChecking"), "SunmiInnerPrinter", "printerSelfChecking", []);
+        })
+    }, getPrinterSerialNo: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "getPrinterSerialNo"), "SunmiInnerPrinter", "getPrinterSerialNo", []);
+        })
+    }, getPrinterVersion: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "getPrinterVersion"), "SunmiInnerPrinter", "getPrinterVersion", [])
+        })
+    }, hasPrinter: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "hasPrinter"), "SunmiInnerPrinter", "hasPrinter", []);
+        })
+    }, getPrintedLength: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "getPrintedLength"), "SunmiInnerPrinter", "getPrintedLength", []);
+        })
+    }, lineWrap: function (count) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "lineWrap"), "SunmiInnerPrinter", "lineWrap", [count]);
+        })
+    }, sendRAWData: function (base64Data) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "sendRAWData"), "SunmiInnerPrinter", "sendRAWData", [base64Data]);
+        })
+    }, setAlignment: function (alignment) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "setAlignment"), "SunmiInnerPrinter", "setAlignment", [alignment]);
+        })
+    }, setFontName: function (typeface) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "setFontName"), "SunmiInnerPrinter", "setFontName", [typeface]);
+        })
+    }, setFontSize: function (fontSize) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "setFontSize"), "SunmiInnerPrinter", "setFontSize", [fontSize]);
+        })
+    }, printTextWithFont: function (text, typeface, fontSize) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printTextWithFont"), "SunmiInnerPrinter", "printTextWithFont", [text, typeface, fontSize]);
+        })
+    }, printColumnsText: function (colsTextArr, colsWidthArr, colsAlign) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printColumnsText"), "SunmiInnerPrinter", "printColumnsText", [colsTextArr, colsWidthArr, colsAlign]);
+        })
+    }, printBitmap: function (base64Data, width, height) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printBitmap"), "SunmiInnerPrinter", "printBitmap", [base64Data, width, height]);
+        })
+    }, printBarCode: function (symbology, width, height, textPosition) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printBarCode"), "SunmiInnerPrinter", "printBarCode", [symbology, width, height, textPosition]);
+        })
+    }, printQRCode: function (qrCodeData, moduleSize, errorLevel) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printQRCode"), "SunmiInnerPrinter", "printQRCode", [qrCodeData, moduleSize, errorLevel]);
+        })
+    }, printOriginalText: function (text) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printOriginalText"), "SunmiInnerPrinter", "printOriginalText", [text]);
+        })
+    }, printString: function (text) {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printString"), "SunmiInnerPrinter", "printString", [text]);
+        })
+    }, printerStatusStartListener: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printerStatusStartListener"), "SunmiInnerPrinter", "printerStatusStartListener", []);
+        })
+    }, printerStatusStopListener: function () {
+        return new Promise((resolve, reject) => {
+            exec(resolve, this._getErrorCallback(reject, "printerStatusStopListener"), "SunmiInnerPrinter", "printerStatusStopListener", []);
+        })
+    },
+    _getErrorCallback: function (ecb, functionName) {
+        if (typeof ecb === 'function') {
+            return ecb;
+        } else {
+            return function (result) {
+                console.log("The injected error callback of '" + functionName + "' received: " + JSON.stringify(result));
+            }
         }
+
     }
 };
 if (typeof module != 'undefined' && module.exports) {
