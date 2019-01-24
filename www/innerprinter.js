@@ -1,4 +1,5 @@
 function SunmiInnerPrinter() {
+    console.log('Custom Sunmi Inner Printer Plugin instanced');
 }
 
 SunmiInnerPrinter.prototype.printerInit = function (successCallback, errorCallback) {
@@ -90,5 +91,6 @@ SunmiInnerPrinter.prototype._getErrorCallback = function (ecb, functionName) {
         }
     }
 };
-
-module.exports = SunmiInnerPrinter;
+if (typeof module != 'undefined' && module.exports) {
+    module.exports = SunmiInnerPrinter;
+}
